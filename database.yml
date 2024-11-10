@@ -1,0 +1,25 @@
+development:
+  <<: *default
+  database: sinatra_seq_dev
+  password: password
+
+test:
+  <<: *default
+  database: sinatra_seq_test
+  password: password
+
+production:
+  <<: *default
+  database: sinatra_seq_prod
+  password: password
+
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: UTF8
+  username: sinatra_admin
+  timeout: 5000
+  reaping_frequency: 30
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
