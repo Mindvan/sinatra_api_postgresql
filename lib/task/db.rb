@@ -2,7 +2,6 @@ require 'rake'
 require 'dotenv/tasks'
 
 namespace :db do
-
   require 'sequel'
   Sequel.extension :migration
   environment = ENV['RACK_ENV'] || 'development'
@@ -18,6 +17,7 @@ namespace :db do
   puts "connection_string = #{connection_string.inspect}"
 
   db = Sequel.connect(connection_string)
+
   desc "Prints current schema version"
   task :version do
     puts "Sinatra::Application.settings = #{Sinatra::Application.settings.inspect}"
@@ -77,5 +77,4 @@ namespace :db do
       )
     Sequel::Seeder.apply(DB, './seeds') 		# Apply the seeds/fixtures
   end
-
 end

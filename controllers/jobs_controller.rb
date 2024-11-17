@@ -7,11 +7,8 @@ namespace '/api/v1' do
   # http://localhost:4567/jobs?place=Remo
   # http://localhost:4567/jobs?company= - all
 
-  # get '/jobs -- http://localhost:4567/jobs?company=Spring
-  # http://localhost:4567/jobs?place=Remo
-  # http://localhost:4567/jobs?company= - all
   get '/jobs' do
-    logger.info "Logger In get /jobs"
+    logger.info "Logger In get /gobs"
     jobs = Job.all
     [:place, :name].each do |filter|
       jobs = jobs.send(filter, params[filter]) if params[filter]

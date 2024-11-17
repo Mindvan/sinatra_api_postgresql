@@ -34,14 +34,12 @@ namespace '/api/v1' do
     applies = Apply.where(geek_id: params[:id], read: true)
     halt(404, { message:'Documents Not Found', status: 404, params_id: params[:id]}.to_json) unless applies
     collection_to_api(applies)
-    apply.values.to_json	# serialization
   end
 
   get '/geek_invited_applies/:id' do
     applies = Apply.where(geek_id: params[:id], invited: true)
     halt(404, { message:'Documents Not Found', status: 404, params_id: params[:id]}.to_json) unless applies
     collection_to_api(applies)
-    apply.values.to_json	# serialization
   end
 
   get '/geek/:id' do

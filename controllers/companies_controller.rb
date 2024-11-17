@@ -1,9 +1,8 @@
 require 'sinatra/namespace'
 require 'sinatra'
 namespace '/api/v1' do
-  # All companies, filtered
-  # get 'http://localhost:4567/companies?name=Mo
   get '/companies' do
+    logger.info "Logger In get /companies"
     companies = Company.all
     return collection_to_api(companies) if params.empty?
     if params['name']
@@ -25,11 +24,8 @@ namespace '/api/v1' do
     collection_to_api(companies)
   end
 
-  # All jobs of the company
-  # get http://localhost:4567/api/v1/company_jobs?name=Mo
   get '/company_jobs' do
     Company.company_jobs(params[:name])
-    # call_one_method(Company, 'company_jobs', params[:name])
   end
 
   post '/companies' do
@@ -44,5 +40,4 @@ namespace '/api/v1' do
     puts "company = #{company.values.inspect} "
     company.values.to_json	# serialization
   end
-
 end
